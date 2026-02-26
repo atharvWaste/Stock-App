@@ -114,6 +114,7 @@
 .centerBtn {
   display: flex;
   justify-content: space-between;
+  cursor: pointer;
 }
 
 .centerBtn a {

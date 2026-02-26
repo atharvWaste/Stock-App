@@ -4,29 +4,22 @@
     box-sizing: border-box;
     overflow-x: hidden;
 }
-:root {
 
-  --fluid-body: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
-  --fluid-h1: clamp(2.5rem, 2rem + 3vw, 5rem);
-  
-
-  --bg-color: #fdfdfd;
-  --text-main: #121212; 
-  --text-muted: #666666;
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
 }
 
 body {
   font-family: 'TASA Explorer', sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-main);
-  font-size: var(--fluid-body);
+
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   letter-spacing: -0.01em; 
 }
 
 h1 {
-  font-size: var(--fluid-h1);
+
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: -0.04em; 

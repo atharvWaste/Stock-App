@@ -1,4 +1,4 @@
-import './Stock.css'
+import '../Stock/Stock.css'
 import { Link } from 'react-router-dom'
 const Nav = ()=>{
 return(
@@ -8,8 +8,8 @@ return(
         <div className="DomyLogo"></div>
     </div>
     <div className="StockLinks">
-       <Link id='OnStock' to='/stock'>Stock</Link>
-       <Link  to='/CryptoBox'>Crypto</Link>
+       <Link to='/stock'>Stock</Link>
+       <Link   id='OnStock'  to='/Crypto'>Crypto</Link>
        <Link  to='/MutualFunds'>MutualFunds</Link>
     </div>
 </div>

@@ -1,137 +1,9 @@
-
-
-.nav{
-    margin-top: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.1 );
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-    backdrop-filter: blur(12px) saturate(180%);
-    border-radius: 25px;
-    top: 2.5vh;
-    background: rgba(28, 28, 28, 0.068);
-    width: 100vw;
-    height: 10vh;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-/* add shadow */
-}
-
-.DomyLogo{
-    height: 50px;
-    width: 50px;
+.CryptoBox{
     background: #000;
+color: #fff;
 }
 
-.left{
-    width: 30%;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-}
-.StockLinks{
-    display: flex;
-}
-
-.StockLinks a{
-    font-size: larger;
-    margin-right: 15px;
-    color: rgb(252, 250, 247);
-    text-decoration: none;
-}
-
-.right{
-     width: 50%;
-display: flex;
-align-items: center;
-justify-content: space-evenly;
-}
-
-.right button{
-    border-radius: 25px;
-    padding: 4px 5px 4px 13px;
-}
-
-.right button a{
-    text-decoration: none;
-    color: #101010;
-}
-
-.sarch{
-    width: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-.SurchBox{
-    width: 70%;
-    border-radius: 25px;
-    padding: 8px 20px 8px 52px;
-   background-color: rgb(25, 25, 26);
-    backdrop-filter: blur(20px) saturate(180%);
-    border:1px solid rgba(0, 0, 0, 0.3);
-    color:#f8fafc;
-    transition: all 0.4s;
-    box-shadow: 0 40px 30px rgba(0, 0, 0, 0.3);
-}
-
-.SurchBox:focus{
-    border: 1px solid rgba(1, 30, 20, 0.4);
-    transform: translateY(-1px);
-}
-
-.ls{
-    width: 15%;
-    display: flex;
-    color: aliceblue;
-    justify-content: space-between;
-}
-
-
-
-.Stockbox{
-    width: 100%;
-    height: 100vh;
-    background: #000;
-    color: #f8fafc;
-}
-
-
-#OnStock{
-    font-weight: 700;
-    color: #4e4e4e;
-}
-.Box{
-    font-size: medium;
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-hr{
-    border: 1px solid #1a1a1a;
-}
-
-.TopSlider{
-    display: flex;
-    align-self: start;
-    justify-content: space-between;
-}
-
-.TopBlock{
-    width: 10%;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-right: 50px;
-    margin-left: 50px;
-    border:1px solid #f9f7fc;
-    padding: 10px;
-    border-radius: 15px;
-    background: linear-gradient(135deg, #00d1ff 0%, #0070ff 100%);
- -webkit-blackdrop-filter:blur(10px)
-}
-
-.MainDashboard {
+.maincontaner {
     display: flex;
     padding: 20px;
     gap: 20px;
@@ -246,3 +118,16 @@ hr{
     flex-direction: column;
 }
 
+.contain{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.single{
+    margin-top: 25px;
+        display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
