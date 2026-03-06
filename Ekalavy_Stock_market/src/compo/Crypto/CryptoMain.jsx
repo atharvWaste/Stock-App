@@ -14,7 +14,7 @@ const CryptoMain = () => {
   return (
     <section className="Box">
       <div className="topRow">
-        <div className="single">
+        <div className="TickerTrack">
           {[...CryptoTrack].map((item, index) => (
             <div className="contain" key={index}>
               <span>{item.name}</span>
@@ -31,7 +31,7 @@ const CryptoMain = () => {
 
         <section className="MarketOverview">
           <div className="SectionHeader">
-            <h2>Market Explorer</h2>
+            <h2>Crypto <samp className="Tilt">Explorer</samp></h2>
             <div className="MarketStatus">● Market Open</div>
           </div>
 
@@ -60,6 +60,27 @@ const CryptoMain = () => {
               </div>
             ))}
           </div>
+        </section>
+
+        
+        <section className="SidePanel">
+          <div className="GlassPanel">
+            <h3>Quick Watchlist</h3>
+            <div className="WatchlistItem">
+              <span>RELIANCE</span>
+              <span className="up">2,980.00</span>
+            </div>
+            <div className="WatchlistItem">
+              <span>HDFCBANK</span>
+              <span className="down">1,420.45</span>
+            </div>
+            <div className="WatchlistItem">
+              <span>INFY</span>
+              <span className="up">1,650.10</span>
+            </div>
+          </div>
+          
+          
         </section>
       </div>
 

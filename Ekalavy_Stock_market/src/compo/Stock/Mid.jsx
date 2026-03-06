@@ -1,34 +1,78 @@
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./Stock.css";
+import { useState } from "react";
 
-const Mid = () => {
-  const indices = [
-    { name: "SENSEX", price: "72,431.10", change: "+450.20", pct: "+0.62%" },
+const Mid = () => { 
+  
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const Data = async (thePara) => {
+  try {
+    console.log("Sending to backend:", thePara);
+    const Request = await axios.put('http://localhost:3000/Genral', { name: thePara });
+    console.log("Response from server:", Request.data);
+    return Request.data;
+  } catch (error) {
+    console.error('Connection failed:', error.message);
+    throw error;
+  }
+};
+
+  const ShiftToNesxtPage = async (cont_Name) => {
+    setLoading(true);
+    
+const formattedName = encodeURIComponent(cont_Name);
+    
+navigate(`/Discription/${formattedName}`);
+    setLoading(false);
+  };
+
+  const funds = [
+    { Name: "TATA", lineContent: "about type of production", price: "5246", pct: "+1.5" },
+       { Name: "TATA", lineContent: "about type of production", price: "5246", pct: "+1.5" },
+          { Name: "TATA", lineContent: "about type of production", price: "5246", pct: "+1.5" },
+             { Name: "TATA", lineContent: "about type of production", price: "5246", pct: "+1.5" },
+                { Name: "TATA", lineContent: "about type of production", price: "5246", pct: "+1.5" }
+  ];
+
+
+  const CryptoTrack = [
+  
+    { name: "Tata Steels", price: "72,431.10", change: "+450.20", pct: "+0.62%" },
     { name: "NIFTY 50", price: "22,120.55", change: "-12.30", pct: "-0.06%" },
-    { name: "BANK NIFTY", price: "46,580.20", change: "+310.45", pct: "+0.67%" },
+    {
+      name: "BANK NIFTY",
+      price: "46,580.20",
+      change: "+310.45",
+      pct: "+0.67%",
+    },
     { name: "NIFTY IT", price: "37,420.15", change: "+105.00", pct: "+0.28%" },
   ];
 
   return (
     <section className="Box">
-      <div className="TickerContainer">
+      {loading && <h1>Shifting</h1>}
+      <div className="topRow">
         <div className="TickerTrack">
-          {[...indices, ...indices].map((item, index) => (
-            <div className="StockTickerBlock" key={index}>
-              <span className="TickerName">{item.name}</span>
-              <span className="TickerPrice">{item.price}</span>
-              <span className={`TickerPct ${item.pct.includes('+') ? 'up' : 'down'}`}>
+          {[...funds].map((item, index) => (
+            <div className="contain" key={index}>
+              <span> {item.Name}</span>
+              <span>{item.price}</span>
+              <span className={`${item.pct.includes("+") ? "up" : "down"}`}>
                 {item.pct}
               </span>
             </div>
           ))}
         </div>
-      </div>
-
+</div>
+       
       <div className="MainDashboard">
 
         <section className="MarketOverview">
           <div className="SectionHeader">
-            <h2>Market Explorer</h2>
+            <h2>stock <samp className="Tilt">Explorer</samp></h2>
             <div className="MarketStatus">● Market Open</div>
           </div>
 
@@ -37,18 +81,18 @@ const Mid = () => {
               <div className="StockCategoryCard" key={idx}>
                 <h3>{category}</h3>
                 <div className="MiniList">
-                  {[1, 2, 3].map(i => (
+                  {[...CryptoTrack].map((body, i) => (
                     <div className="StockRow" key={i}>
                       <div className="StockInfo">
-                        <span className="Symbol">TATASTEEL</span>
-                        <span className="Company">Tata Steel Ltd.</span>
+                        <span className="Symbol"><a onClick={()=>{ShiftToNesxtPage(body.name)}}>{body.name}</a></span>
+                        <span className="Company">{body.price}</span>
                       </div>
                       <div className="StockGraph">
                          <div className="Sparkline"></div>
                       </div>
                       <div className="StockValue">
-                        <span className="Price">₹141.20</span>
-                        <span className="Change up">+2.4%</span>
+                        <span className="Price">{body.change}</span>
+                        <span className="Change up">{body.pct}</span>
                       </div>
                     </div>
                   ))}
@@ -59,7 +103,7 @@ const Mid = () => {
           </div>
         </section>
 
-       
+        
         <section className="SidePanel">
           <div className="GlassPanel">
             <h3>Quick Watchlist</h3>
@@ -77,15 +121,11 @@ const Mid = () => {
             </div>
           </div>
           
-          <div className="GlassPanel PromotionCard">
-            <h4>Analyze with AI</h4>
-            <p>Get deep insights into stock patterns.</p>
-            <button className="ProBtn">Upgrade to Pro</button>
-          </div>
+          
         </section>
       </div>
+
     </section>
   );
 };
-
 export default Mid;

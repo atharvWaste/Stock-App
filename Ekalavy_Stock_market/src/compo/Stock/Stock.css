@@ -75,10 +75,6 @@ justify-content: space-evenly;
     box-shadow: 0 40px 30px rgba(0, 0, 0, 0.3);
 }
 
-.SurchBox:focus{
-    border: 1px solid rgba(1, 30, 20, 0.4);
-    transform: translateY(-1px);
-}
 
 .ls{
     width: 15%;
@@ -146,7 +142,7 @@ hr{
 .SidePanel {
     flex: 1;
     display: flex;
-    flex-direction: column;
+
     gap: 20px;
 }
 
@@ -156,6 +152,17 @@ hr{
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+}
+
+.SectionHeader h2{
+    font-size: 100px;
+    font-weight: 100;
+}
+
+.Tilt{
+    letter-spacing: -5px;
+    color: #07b6f1e4;
+    font-style: italic;
 }
 
 .MarketStatus {
@@ -187,9 +194,6 @@ hr{
 }
 
 .StockRow {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     padding: 12px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
@@ -225,24 +229,54 @@ hr{
 }
 
 .WatchlistItem {
-    display: flex;
-    justify-content: space-between;
     padding: 10px 0;
     font-size: 14px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .TickerTrack{
+    position: relative;
+    left: -100%;
+    gap: 50px;
     margin-top: 10px;
-    margin-bottom: 50px;
-     display: flex;
-     align-items: center;
-     justify-content: space-between;
-     width: 100vw;
+    margin-bottom: 50px; 
+     width: max-content;
+     animation: scroll 10s linear infinite;
 }
 
 .StockTickerBlock{
     display: flex;
-    flex-direction: column;
 }
 
+.TickerName{
+    font-size: 13px;
+    font-weight: 100;
+    color: #4e4e4e;
+}
+
+.TickerPrice{
+     font-size: 15px;
+    font-weight: 100;
+}
+
+.TickerPct{
+     font-size: 15px;
+    font-weight: 100;
+}
+
+.TickerContainer{
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+}
+
+@keyframes scroll {
+    0%{
+        transform: translateX(0);
+    }
+
+     100%{
+        transform: translateX(100%);
+    }
+}

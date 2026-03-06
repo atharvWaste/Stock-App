@@ -16,7 +16,7 @@ const handleTransition =()=>{
 
     return(
         <>
-        {loading && Video}
+        {loading && <Video />}
         <section className="CenterIntro">
             <div className="IntroBox">
 <div className="head"><h1>Stock Bull</h1></div>

@@ -29,6 +29,38 @@ const MutualFundsMid = () => {
     },
    
   ];
+
+
+
+  const CardInfo=[
+    {
+      Name:"TATASTEEL",
+      companyInfo:"Tata Steel Ltd.",
+      price:"₹141.20",
+      pct:"+2.4%"
+    },
+     {
+      Name:"TATASTEEL",
+      companyInfo:"Tata Steel Ltd.",
+      price:"₹141.20",
+      pct:"+2.4%"
+    }, {
+      Name:"TATASTEEL",
+      companyInfo:"Tata Steel Ltd.",
+      price:"₹141.20",
+      pct:"+2.4%"
+    }, {
+      Name:"TATASTEEL",
+      companyInfo:"Tata Steel Ltd.",
+      price:"₹141.20",
+      pct:"+2.4%"
+    }, {
+      Name:"TATASTEEL",
+      companyInfo:"Tata Steel Ltd.",
+      price:"₹141.20",
+      pct:"+2.4%"
+    },
+  ]
   return (
     <section className="Box">
       <div className="TickerContainer">
@@ -49,7 +81,7 @@ const MutualFundsMid = () => {
 
         <section className="MarketOverview">
           <div className="SectionHeader">
-            <h2>Market Explorer</h2>
+            <h2>Mutual Funds <samp className="Tilt">Explorer</samp></h2>
             <div className="MarketStatus">● Market Open</div>
           </div>
 
@@ -58,18 +90,18 @@ const MutualFundsMid = () => {
               <div className="StockCategoryCard" key={idx}>
                 <h3>{category}</h3>
                 <div className="MiniList">
-                  {[1, 2, 3].map(i => (
+                  {[...CardInfo].map((contentTExt , i) => (
                     <div className="StockRow" key={i}>
                       <div className="StockInfo">
-                        <span className="Symbol">TATASTEEL</span>
-                        <span className="Company">Tata Steel Ltd.</span>
+                        <span className="Symbol">{contentTExt.Name}</span>
+                        <span className="Company">{contentTExt.companyInfo}</span>
                       </div>
                       <div className="StockGraph">
                          <div className="Sparkline"></div>
                       </div>
                       <div className="StockValue">
-                        <span className="Price">₹141.20</span>
-                        <span className="Change up">+2.4%</span>
+                        <span className="Price">{contentTExt.price}</span>
+                        <span className="Change up">{contentTExt.pct}</span>
                       </div>
                     </div>
                   ))}
@@ -98,11 +130,7 @@ const MutualFundsMid = () => {
             </div>
           </div>
           
-          <div className="GlassPanel PromotionCard">
-            <h4>Analyze with AI</h4>
-            <p>Get deep insights into stock patterns.</p>
-            <button className="ProBtn">Upgrade to Pro</button>
-          </div>
+         
         </section>
       </div>
     </section>
