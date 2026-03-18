@@ -13,22 +13,7 @@ const CryptoMain = () => {
 
   return (
     <section className="Box">
-      <div className="topRow">
-        <div className="TickerTrack">
-          {[...CryptoTrack].map((item, index) => (
-            <div className="contain" key={index}>
-              <span>{item.name}</span>
-              <span>{item.price}</span>
-              <span className={`${item.pct.includes("+") ? "up" : "down"}`}>
-                {item.pct}
-              </span>
-            </div>
-          ))}
-        </div>
-</div>
-       
-      <div className="MainDashboard">
-
+   <div className="MainDashboard">
         <section className="MarketOverview">
           <div className="SectionHeader">
             <h2>Crypto <samp className="Tilt">Explorer</samp></h2>

@@ -44,44 +44,23 @@ const MutualFundsMid = () => {
       companyInfo:"Tata Steel Ltd.",
       price:"₹141.20",
       pct:"+2.4%"
-    }, {
+    }, 
+    {
       Name:"TATASTEEL",
       companyInfo:"Tata Steel Ltd.",
       price:"₹141.20",
       pct:"+2.4%"
-    }, {
-      Name:"TATASTEEL",
-      companyInfo:"Tata Steel Ltd.",
-      price:"₹141.20",
-      pct:"+2.4%"
-    }, {
-      Name:"TATASTEEL",
-      companyInfo:"Tata Steel Ltd.",
-      price:"₹141.20",
-      pct:"+2.4%"
-    },
+    }
   ]
   return (
     <section className="Box">
-      <div className="TickerContainer">
-        <div className="TickerTrack">
-          {[...ArrMutualFundsMid, ...ArrMutualFundsMid].map((item, index) => (
-            <div className="StockTickerBlock" key={index}>
-              <span className="TickerName">{item.Name}</span>
-              <span className="TickerPrice">{item.price}</span>
-              <span className={`TickerPct ${item.pct.includes('+') ? 'up' : 'down'}`}>
-                {item.pct}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
+   
 
       <div className="MainDashboard">
 
         <section className="MarketOverview">
           <div className="SectionHeader">
-            <h2>Mutual Funds <samp className="Tilt">Explorer</samp></h2>
+            <h2>Funds <samp className="Tilt">Explorer</samp></h2>
             <div className="MarketStatus">● Market Open</div>
           </div>
 

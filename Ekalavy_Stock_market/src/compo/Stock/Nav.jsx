@@ -5,11 +5,13 @@ return(
     <section className="nav">
 <div className="left">
     <div className="Logo">
-        <div className="DomyLogo"></div>
+        <div className="DomyLogo">
+            <img src="../assets/i2.jpg" width={'100px'} className='logo'/>
+        </div>
     </div>
     <div className="StockLinks">
        <Link id='OnStock' to='/stock'>Stock</Link>
-       <Link  to='/CryptoBox'>Crypto</Link>
+       <Link  to='/WBox'>WishLlist</Link>
        <Link  to='/MutualFunds'>MutualFunds</Link>
     </div>
 </div>
