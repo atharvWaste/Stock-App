@@ -1,20 +1,31 @@
-import cors from 'cors'
+import cors from "cors";
 
-const SolutionOfCors = (app)=>{
-const AlowedOrigins=[
+const SolutionOfCors = (app) => {
+  const allowedOrigins = [
     "http://localhost:3000",
-    "http://localhost:5173"
-]
+    "http://localhost:5173",
+  ];
 
-app.use(cors({
-    origin:function (origin , callBack) {
-        if(!origin || AlowedOrigins.includes(origin)){
-            callBack(null, true);
-        }else{
-            callBack(new Error("Not allowed by the CORS"))
-        }
-    }
-}))
-}
+  const corsOptions = {
+    origin: function (origin, callback) {
+      // allow requests with no origin (Postman, mobile apps)
+      if (!origin) return callback(null, true);
+
+      if (allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+
+    methods: ["GET", "POST", "PUT", "DELETE"],
+
+    allowedHeaders: ["Content-Type", "Authorization"],
+
+    credentials: true, 
+  };
+
+  app.use(cors(corsOptions));
+};
 
 export default SolutionOfCors;

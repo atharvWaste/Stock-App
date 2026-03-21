@@ -1,25 +1,27 @@
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Stock.css";
-import { useState } from "react";
+import { useState,useEffect} from "react";
 
 const Mid = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  ;( async (thePara) => {
+useEffect(() => {
+  const fetchData = async () => {
     try {
-      console.log("Sending to backend:", thePara);
-      const Request = await axios.post("http://localhost:3000/Genral", {
-        name: thePara,
-      });
-      console.log("Response from server:", Request.data);
-      return Request.data;
+      const res = await axios.get("http://localhost:3000/StaterMatter");
+
+      console.log("DATA FROM BACKEND:", res.data);
+
+      setData(res.data);
     } catch (error) {
-      console.error("Connection failed:", error.message);
-      throw error;
+      console.error("Error:", error.message);
     }
-  })()
+  };
+
+  fetchData();
+}, []);
 
   const ShiftToNesxtPage = async (cont_Name) => {
     setLoading(true);
@@ -127,13 +129,13 @@ const Mid = () => {
                               {body.name}
                             </a>
                           </span>
-                          <span className="Company">{body.price}</span>
+                          <span className="Company">Rs. {body.change}</span>
                         </div>
                         <div className="StockGraph">
                           <div className="Sparkline"></div>
                         </div>
                         <div className="StockValue">
-                          <span className="Price">{body.change}</span>
+                          <span className="Price">Rs. {body.price}</span>
                           <span className="Change up">{body.pct}</span>
                         </div>
                       </div>

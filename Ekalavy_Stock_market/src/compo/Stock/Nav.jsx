@@ -10,9 +10,9 @@ return(
         </div>
     </div>
     <div className="StockLinks">
-       <Link id='OnStock' to='/stock'>Stock</Link>
-       <Link  to='/WBox'>WishLlist</Link>
-       <Link  to='/MutualFunds'>MutualFunds</Link>
+       <Link  to='/stock'>Stock</Link>
+       <Link id='OnStock' to='/WBox'>WishLlist</Link>
+       <Link id='OnStock' to='/MutualFunds'>MutualFunds</Link>
     </div>
 </div>
 <div className="right">
