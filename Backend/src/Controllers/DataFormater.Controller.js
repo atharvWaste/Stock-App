@@ -1,6 +1,6 @@
 import ArraySender from '../Utils/ArraySender.Utils.js'
 
-const DataFormater=()=>{
+const DataFormater=(body)=>{
 
 
 

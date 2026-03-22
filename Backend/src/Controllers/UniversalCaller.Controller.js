@@ -9,22 +9,29 @@ import DataFormater from "../Controllers/DataFormater.Controller.js"
 
 const urls = Url();
 const UniversalCaller = async (req, res) => {
-  // Api calling at end point
   try {
-    const Response = await Promise.all(
+    const Responses = await Promise.all(
       urls.map((url) =>
         request(url, {
           headers: { "x-api-key": ApiKey },
         }),
       ),
     );
+    const Result =await Promise.all(
+      Responses.map((Response,index)=>{
+const {statusCode , body} = Response;
 
-    const StatusCode = Response.status;
-    const data = Response.body.json();
+if (statusCode !=200) {
+  console.error(`api lodding error ${index}, ${statusCode}`);
+}
+const Resbody =body.json();
+return Resbody;
 
-    if (StatusCode === 200) {
-      DataFormater(data);
-    }
+      })
+    )
+    
+DataFormater(Result);
+
   } catch (error) {
     console.error(error);
   }
