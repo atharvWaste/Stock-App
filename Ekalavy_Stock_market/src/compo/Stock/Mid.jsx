@@ -1,27 +1,42 @@
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Stock.css";
-import { useState,useEffect} from "react";
+import { useState, useEffect } from "react";
 
-const Mid = () => {
+const Mid = ({ onChange }) => {
+  const [data, setData] = useState([]);
+  const [isNSE, setIsNSE] = useState(false);
+
+  const handleChange = () => {
+    const newValue = !isNSE;
+    setIsNSE(newValue);
+    onChange(newValue ? "NSE" : "BSE");
+  };
+  // ----------------------------------------------------------------------------------------------------------------------------
+
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-useEffect(() => {
-  const fetchData = async () => {
-    try {
-      const res = await axios.get("http://localhost:3000/StaterMatter");
+  useEffect(() => {
+    const fetchData = async () => {
+      if (isNSE === undefined) return;
 
-      console.log("DATA FROM BACKEND:", res.data);
+      let transmiter = isNSE ? "NSE" : "BSE";
+      try {
+        const res = await axios.get(
+          `http://localhost:3000/StanderdData?market=${transmiter}`,
+        );
 
-      setData(res.data);
-    } catch (error) {
-      console.error("Error:", error.message);
-    }
-  };
+        console.log("DATA FROM BACKEND:", res.data);
 
-  fetchData();
-}, []);
+        setData(res.data);
+      } catch (error) {
+        console.error("Error:", error.message);
+      }
+    };
+
+    fetchData();
+  }, [isNSE]);
 
   const ShiftToNesxtPage = async (cont_Name) => {
     setLoading(true);
@@ -65,7 +80,7 @@ useEffect(() => {
     },
   ];
 
-  const CryptoTrack = [
+  const Stock = [
     {
       name: "Tata Steels",
       price: "72,431.10",
@@ -107,7 +122,18 @@ useEffect(() => {
             </h2>
             <div className="WhatShouldIname">
               <div className="MarketStatus">● Market Open</div>
-              <div className="MarketStatus">BSE</div>
+              <label className="toggle">
+                <input
+                  type="checkbox"
+                  checked={isNSE}
+                  onChange={handleChange}
+                />
+                <span className="track">
+                  <span className="label left">NSE</span>
+                  <span className="label right">BSE</span>
+                  <span className="thumb" />
+                </span>
+              </label>
             </div>
           </div>
 
@@ -117,7 +143,7 @@ useEffect(() => {
                 <div className="StockCategoryCard" key={idx}>
                   <h3>{category}</h3>
                   <div className="MiniList">
-                    {[...CryptoTrack].map((body, i) => (
+                    {[...Stock].map((body, i) => (
                       <div className="StockRow" key={i}>
                         <div className="StockInfo">
                           <span className="Symbol">
